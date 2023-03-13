@@ -29,3 +29,11 @@ Por outro lado, um container Docker é uma instância em execução de uma image
 ***Exec:*** A estratégia exec executa comandos diretamente, sem o uso de um shell. 
 
 A estratégia exec é considerada mais segura e mais rápida do que a estratégia shell, mas não suporta a expansão de variáveis de ambiente. A escolha entre as duas estratégias depende das necessidades específicas do caso de uso.
+
+## Qual a diferença entre os comandos docker stop <container_id> e docker kill <container_id>? 
+
+***Stop:*** O comando `docker stop <container_id>` é uma maneira mais suave e controlada de encerrar um contêiner
+
+***Kill:*** O comando `docker kill <container_id>` é uma forma mais brusca e forçada de encerrar um contêiner
+
+É recomendável tentar primeiro o comando `docker stop <container_id>`, a menos que seja necessário encerrar imediatamente o contêiner usando o comando `docker kill <container_id>`.
