@@ -118,7 +118,7 @@
                                 <i class="bi bi-pencil-square"></i>
                             </button>
                             <button class="btn btn-danger">
-                                <i class="bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#modal_book_delete"></i>
+                                <i class="bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#modal_delete"></i>
                             </button>
                         </div>
                     </header>
@@ -145,16 +145,16 @@
                 <li class="card card-publish bg-light p-3">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <picture>
-                            <img src="img/principis.jpeg" alt="Imagem do Livro" class="img-publish img-fluid">
+                            <img src="img/principis.jpeg" alt="Imagem da Editora" class="img-publish img-fluid">
                         </picture>
     
                         <header>
                             <div class="d-flex justify-content-end btn-group-sm gap-1">
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_book_edit">
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_publisher_edit">
                                     <i class="bi bi-pencil-square"></i>
                                 </button>
                                 <button class="btn btn-danger">
-                                    <i class="bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#modal_book_delete"></i>
+                                    <i class="bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#modal_delete"></i>
                                 </button>
                             </div>
                             <!-- No javaScript adiciona para ter um controle do tamanho do texto para 13 caracteres -->
@@ -178,9 +178,9 @@
         </div>
     </footer>
 
-    <!-- Modais de CRUD de livro -->
+    <!-- Modais de editar -->
 
-    <div class="modal fade" id="modal_book_edit" tabindex="-1" aria-labelledby="modal__edit" aria-hidden="true">
+    <div class="modal fade" id="modal_book_edit" tabindex="-1" aria-labelledby="modal_book_edit" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -189,16 +189,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Link</span>
-                        <input type="text" class="form-control" placeholder="Link da Imagem" aria-label="link" aria-describedby="basic-addon1">
+                        <span class="input-group-text">Link</span>
+                        <input type="text" class="form-control" placeholder="Link da Imagem" aria-label="link">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Nome</span>
-                        <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="name" aria-describedby="basic-addon1">
+                        <span class="input-group-text">Nome</span>
+                        <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="name">
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Lançamento</span>
-                        <input type="date" class="form-control" placeholder="Data de Lançamento" aria-label="release_date" aria-describedby="basic-addon1">
+                        <span class="input-group-text">Lançamento</span>
+                        <input type="date" class="form-control" placeholder="Data de Lançamento" aria-label="release_date">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -209,11 +209,42 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modal_book_delete" tabindex="-1" aria-labelledby="modal_book_delete" aria-hidden="true">
+    <div class="modal fade" id="modal_publisher_edit" tabindex="-1" aria-labelledby="modal_publisher_edit" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal_book_edit-title">Editar dados</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Link</span>
+                        <input type="text" class="form-control" placeholder="Link da Imagem" aria-label="link">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nome</span>
+                        <input type="text" class="form-control" placeholder="Nome da Editora" aria-label="name">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Origem</span>
+                        <input type="text" class="form-control" placeholder="Lugar de Origem" aria-label="origin">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de excluir -->
+
+    <div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="modal_delete" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header bg-danger d-flex justify-content-center">
-                    <h5 class="modal-title text-white">Excluir Livro</h5>
+                    <h5 class="modal-title text-white" id="modal_delete-title">Excluir Livro</h5>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                     <i class="bi bi-x-circle-fill h1 text-danger"></i>
@@ -235,8 +266,8 @@
                     <h5 class="modal-title text-white">Escolhar o que vai adicionar:</h5>
                 </div>
                 <div class="modal-body p-4 d-flex gap-4 justify-content-center">
-                    <button class="btn btn-outline-primary w-50 fw-bold" id="button_add_publisher" data-bs-toggle="modal" data-bs-target="#modal_book_edit">Editora</button>
-                    <button class="btn btn-primary w-50 fw-bold" id="button_add_livro" data-bs-toggle="modal" data-bs-target="#modal_book_edit">Livro</button>
+                    <button class="btn btn-outline-primary w-50 fw-bold" id="button_add_publisher" data-bs-toggle="modal" data-bs-target="#modal_publisher_edit">Editora</button>
+                    <button class="btn btn-primary w-50 fw-bold" id="button_add_book" data-bs-toggle="modal" data-bs-target="#modal_book_edit">Livro</button>
                 </div>
             </div>
         </div>
