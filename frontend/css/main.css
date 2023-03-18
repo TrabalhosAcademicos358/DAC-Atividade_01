@@ -1,0 +1,39 @@
+body.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+.img-book {
+    height: 275px;
+}
+
+.img-publish {
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.search {
+    width: 350px;
+}
+
+.card-book {
+    width: 300px;
+}
+
+.card-publish {
+    width: 225px;
+}
+
+.footer-color {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}

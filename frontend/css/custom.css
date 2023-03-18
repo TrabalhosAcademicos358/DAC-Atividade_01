@@ -1,0 +1,12 @@
+.container {
+    max-width: 1250px;
+    width: 90%;
+}
+
+.modal-footer {
+    flex-wrap: nowrap;
+}
+
+.modal-sm {
+    max-width: 350px;
+}
