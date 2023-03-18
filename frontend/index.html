@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Controle de Livros</title>
+
+    <style>
+        .img {
+            height: 350px;
+        }
+
+        .card {
+            width: 300px;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/ea39498b5d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav></nav>
+    <main>
+        <div class="d-flex w-100 p-4 justify-content-end">
+            <i class="fa-regular fa-circle-plus"></i>
+        </div>
+        <ul id="list-elements">
+            <li class="card bg-light p-2">
+                <header class="d-flex justify-content-between align-items-center">
+                    <!-- No javaScript adiciona para ter um controle do tamanho do texto para 24 caracteres -->
+                    <p class="card-title fw-bold">Harry Pother e a Pedr...</p>
+                    <div class="d-flex gap-1">
+                        <button class="btn btn-primary">
+                            <i class="fa-duotone fa-pen-to-square"></i>
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fa-duotone fa-trash"></i>
+                        </button>
+                    </div>
+                </header>
+                <picture class="card-img d-flex my-3 justify-content-center">
+                    <img src="img/Harry_Pother-Pedra_Filosofal.jpg" alt="Imagem do Livro" class="img img-fluid">
+                </picture>
+                <!-- No JS adicionar para ser só um elemento com o texto e a data -->
+                <span class="d-flex justify-content-center">
+                    <p class="fw-bold">Data de Lançamento:</p>
+                    <p id="release_date">36/06/1997</p>
+                </span>
+            </li>
+        </ul>
+    </main>
+    <footer></footer>
+</body>
+</html>
