@@ -30,6 +30,10 @@
         .footer-div {
             background-color: rgba(0, 0, 0, 0.1);
         }
+
+        .modal-footer {
+            flex-wrap: nowrap;
+        }
     </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -62,6 +66,7 @@
             </div>
         </div>
     </nav>
+
     <main>
         <div class="d-flex w-100 p-4 justify-content-end">
             <i class="bi bi-plus-circle h2"></i>
@@ -72,11 +77,11 @@
                     <!-- No javaScript adiciona para ter um controle do tamanho do texto para 24 caracteres -->
                     <p class="card-title fw-bold m-0">Harry Pother e a Pedr...</p>
                     <div class="d-flex gap-1">
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal_edit">
                             <i class="bi bi-pencil-square"></i>
                         </button>
                         <button class="btn btn-danger">
-                            <i class="bi bi-trash3-fill"></i>
+                            <i class="bi bi-trash3-fill" data-bs-toggle="modal" data-bs-target="#modal_delete"></i>
                         </button>
                     </div>
                 </header>
@@ -91,11 +96,58 @@
             </li>
         </ul>
     </main>
+
     <footer class="bg-light text-center text-lg-start">
         <div class="text-center p-3 footer-div">
           ©2023 Copyright:
           <a href="https://github.com/Pedro35803">Pedro35803</a>
         </div>
     </footer>
+
+    <div class="modal fade" id="modal_edit" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Editar dados</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Link</span>
+                        <input type="text" class="form-control" placeholder="Link da Imagem" aria-label="link" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nome</span>
+                        <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="name" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Lançamento</span>
+                        <input type="date" class="form-control" placeholder="Data de Lançamento" aria-label="release_date" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal_delete" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-danger d-flex justify-content-center">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Excluir Livro</h5>
+                </div>
+                <div class="modal-body d-flex justify-content-center">
+                    <i class="bi bi-x-circle-fill h1 text-danger"></i>
+                </div>
+                <div class="modal-footer d-flex gap-2">
+                    <button type="button" class="btn btn-secondary w-50" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger w-50">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
