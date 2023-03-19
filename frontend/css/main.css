@@ -1,4 +1,4 @@
-body.page {
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -6,6 +6,7 @@ body.page {
 
 main {
     flex: 1;
+    padding: 24px 0;
 }
 
 .img-book {
@@ -30,10 +31,60 @@ main {
     width: 225px;
 }
 
+.card-select {
+    height: 150px;
+    width: 125px;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    transform: scale(2.5);
+    transition: background .4s ease;
+}
+
+.card-select::after {
+    content: "Editoras";
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    text-decoration: none;
+    color: #808080;
+}
+
+.card-select:nth-child(1):after {
+    content: "Livros";
+}
+
+.card-select:hover {
+    background: #eee;
+}
+
+.card-select:hover::after {
+    transition: .25s ease;
+    visibility: visible;
+    opacity: 100%;
+    bottom: 40px;
+}
+
 .footer-color {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.container {
+    max-width: 1250px;
+    width: 90%;
+}
+
+.modal-footer {
+    flex-wrap: nowrap;
+}
+
+.modal-sm {
+    max-width: 350px;
 }
