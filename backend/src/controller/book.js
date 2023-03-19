@@ -2,9 +2,7 @@ import db from "../db.js";
 
 export const all = async (req, res) => {
     const books = await db.book.findMany();
-    // console.log(db.book)
     res.json(books);
-    res.send(await db.book.name)
 }
 
 export const getForId = async (req, res) => {
@@ -18,10 +16,10 @@ export const getForId = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-    const { release_date, title } = req.body;
+    const { release_date, title, link_img } = req.body;
 
     const book = await db.book.create({                                                                                                                                                                                                                                                                                                                                                                                                        
-        data: { release_date, title }
+        data: { release_date, title, link_img }
     });
 
     res.status(201).json(book);
@@ -29,7 +27,7 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
     const { id } = req.params;
-    const { release_date, title } = req.body;
+    const { release_date, title, link_img } = req.body;
 
     await db.book.findUniqueOrThrow({
         where: { id }
@@ -37,7 +35,7 @@ export const update = async (req, res) => {
 
     const book = await bd.book.update({
         where: { id },
-        data: { release_date, title }
+        data: { release_date, title, link_img }
     });
 
     res.status(201).json(book);

@@ -16,10 +16,10 @@ export const getForId = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-    const { place_of_origin, trading_name } = req.body;
+    const { place_of_origin, trading_name, link_img } = req.body;
 
     const publisher = await db.publisher.create({                                                                                                                                                                                                                                                                                                                                                                                                        
-        data: { place_of_origin, trading_name }
+        data: { place_of_origin, trading_name, link_img }
     });
 
     res.status(201).json(publisher);
@@ -27,7 +27,7 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
     const { id } = req.params;
-    const { place_of_origin, trading_name } = req.body;
+    const { place_of_origin, trading_name, link_img } = req.body;
 
     await db.publisher.findUniqueOrThrow({
         where: { id }
@@ -35,7 +35,7 @@ export const update = async (req, res) => {
 
     const publisher = await bd.publisher.update({
         where: { id },
-        data: { place_of_origin, trading_name }
+        data: { place_of_origin, trading_name, link_img }
     });
 
     res.status(201).json(publisher);

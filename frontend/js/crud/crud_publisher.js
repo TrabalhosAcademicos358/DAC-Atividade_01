@@ -1,4 +1,6 @@
-const urlApi = "http://localhost:3000/publisher"
+import config from "../config.js"
+
+const urlApi = config.urlApi + "/publisher"
 
 export const getAll = async () => {
     const response = await fetch(urlApi)

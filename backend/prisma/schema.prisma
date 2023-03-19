@@ -3,22 +3,24 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./database.db"
 }
 
 model Book {
-  id            Int @id @default(autoincrement())
+  id            Int        @id @default(autoincrement())
   title         String
+  link_img      String
   release_date  DateTime
 
   @@map("books")
 }
 
 model Publisher {
-  codigo          Int @id @default(autoincrement())
-  place_of_origin String
-  trading_name    String
+  codigo            Int     @id @default(autoincrement())
+  place_of_origin   String
+  trading_name      String
+  link_img          String
 
   @@map("publishers")
 }
