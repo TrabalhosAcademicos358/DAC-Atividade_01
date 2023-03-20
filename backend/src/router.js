@@ -1,6 +1,7 @@
 import express from "express";
 
-import * as controllerBook from "./controller/book.js"
+import * as controllerPublisher from "./controller/publisher.js"
+import * as controllerBook from "./controller/book.js";
 
 const router = express.Router();
 
@@ -15,13 +16,13 @@ router.route("/books/:id")
     .delete(controllerBook.destroy);
 
 router.route("/publishers")
-    .get(controllerBook.all)
-    .post(controllerBook.create);
+    .get(controllerPublisher.all)
+    .post(controllerPublisher.create);
 
 router.route("/publishers/:id")
-    .get(controllerBook.getForId)
-    .put(controllerBook.update)
-    .patch(controllerBook.update)
-    .delete(controllerBook.destroy);
+    .get(controllerPublisher.getForId)
+    .put(controllerPublisher.update)
+    .patch(controllerPublisher.update)
+    .delete(controllerPublisher.destroy);
 
 export default router;

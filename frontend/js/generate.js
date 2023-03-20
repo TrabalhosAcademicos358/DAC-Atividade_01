@@ -1,10 +1,11 @@
 export const generateCardPublisher = ({ 
     place_of_origin, 
     trading_name, 
-    link_img 
+    link_img,
+    id
 }) => {
     const element = `
-        <li class="card card-publish bg-light p-3">
+        <li class="card card-publish bg-light p-3" id="${id}">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <picture>
                     <img src="${link_img}" alt="Imagem da Editora" class="img-publish img-fluid">
@@ -28,18 +29,17 @@ export const generateCardPublisher = ({
         </li>
     `
 
-    const list = document.querySelector("#list-publish");
-    list.innerHTML += element;
-    return element;
+    addElement(element)
 }
 
 export const generateCardBook = ({ 
     release_date,
     link_img,
-    title
+    title,
+    id
 }) => {
     const element = `
-        <li class="card card-book bg-light p-2">
+        <li class="card card-book bg-light p-2" id="${id}">
             <header class="d-flex justify-content-between align-items-center">
                 <p class="card-title fw-bold m-0">${limitText(title, 24)}</p>
                 <div class="d-flex gap-1">
@@ -60,9 +60,7 @@ export const generateCardBook = ({
         </li>
     `
 
-    const list = document.querySelector("#list-books");
-    list.innerHTML += element;
-    return element;
+    addElement(element)
 }
 
 const limitText = (text, limit) => {
@@ -76,4 +74,17 @@ const formateDate = (date) => {
     const listDate = date.split("-");
     const dateFormated = listDate[1] + "/" + listDate[0] + "/" + listDate[2];
     return dateFormated;
+}
+
+const addElement = (element) => {
+    const parser = new DOMParser()
+    const elementHTML = parser.parseFromString(element, "text/html");
+
+    const tagLi = elementHTML.querySelector("li")
+    tagLi.addEventListener("click", () => {
+        sessionStorage.setItem("id", tagLi.id)
+    });
+
+    const list = document.querySelector("#list-publish");
+    list.appendChild(tagLi);
 }

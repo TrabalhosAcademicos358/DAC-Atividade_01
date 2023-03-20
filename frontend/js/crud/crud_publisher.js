@@ -1,10 +1,10 @@
-import config from "../config.js"
+import config from "../config.js";
 
-const urlApi = config.urlApi + "/publisher"
+const urlApi = config.urlApi + "/publishers";
 
 export const getAll = async () => {
-    const response = await fetch(urlApi)
-    return await response.json()
+    const response = await fetch(urlApi);
+    return await response.json();
 }
 
 export const create = async ({ 
@@ -24,11 +24,11 @@ export const create = async ({
         })
 	};
 
-    const response = await fetch(urlApi, config)
+    const response = await fetch(urlApi, config);
     
     if (!response.ok) throw new Error('Não foi possível criar editora.');
 
-    return await response.json()
+    return await response.json();
 }
 
 export const update = async (id, update) => {
@@ -40,16 +40,16 @@ export const update = async (id, update) => {
         body: JSON.stringify(update)
 	};
 
-    const response = await fetch(`${urlApi}/${id}`, config)
+    const response = await fetch(`${urlApi}/${id}`, config);
 
     if (!response.ok) throw new Error('Não foi possível atualizar editora.');
 
-    return await response.json()
+    return await response.json();
 }
 
 export const destroy = async (id) => {
-    const config = { method: "DELETE" }
-
-    const response = await fetch(`${urlApi}/${id}`, config)
-    return await response.json()
+    const config = { method: "DELETE" };
+    
+    const response = await fetch(`${urlApi}/${id}`, config);
+    return await response.json();
 }

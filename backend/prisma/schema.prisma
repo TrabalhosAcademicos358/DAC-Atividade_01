@@ -17,7 +17,7 @@ model Book {
 }
 
 model Publisher {
-  codigo            Int     @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
   place_of_origin   String
   trading_name      String
   link_img          String
