@@ -44,7 +44,7 @@ export const update = async (req, res) => {
 export const destroy = async (req, res) => {
     const { id } = req.params;
 
-    const filter = { where: { id } };
+    const filter = { where: { id: Number(id) } };
 
     await db.publisher.findUniqueOrThrow(filter);
     const publisher = await db.publisher.delete(filter);

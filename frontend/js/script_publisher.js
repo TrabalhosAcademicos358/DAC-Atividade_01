@@ -18,7 +18,15 @@ form_publish_edit.addEventListener("submit", async (event) => {
 
 const buttonDelete = document.querySelector("#delete_publish");
 buttonDelete.addEventListener("click", async () => {
-    console.log(sessionStorage.getItem("id"))
+    try {
+        const id = sessionStorage.getItem("id");
+        await controllerPublish.destroy(id);
+        // document.querySelector("#" + id).remove();
+    } catch (error) {
+        // alert(error.message);
+        console.log(error);
+    }
+
 });
 
 loadingPublisher();

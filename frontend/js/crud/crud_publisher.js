@@ -49,7 +49,5 @@ export const update = async (id, update) => {
 
 export const destroy = async (id) => {
     const config = { method: "DELETE" };
-    
-    const response = await fetch(`${urlApi}/${id}`, config);
-    return await response.json();
+    await fetch(`${urlApi}/${id}`, config);
 }
