@@ -8,8 +8,8 @@ form_publish_create.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     try {
-        const objUser = Object.fromEntries(new FormData(form_publish_create));
-        const publisher = await controllerPublish.create(objUser);
+        const objPublish = Object.fromEntries(new FormData(form_publish_create));
+        const publisher = await controllerPublish.create(objPublish);
         await generateCardPublisher(publisher);
     } catch (error) {
         alert(error.message);
@@ -21,11 +21,11 @@ form_publish_edit.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     try {
-        const objUser = Object.fromEntries(new FormData(form_publish_edit));
+        const objPublish = Object.fromEntries(new FormData(form_publish_edit));
         // const currentElement = document.querySelector("li#" + id);
 
         const id = sessionStorage.getItem("id");
-        const publisher = await controllerPublish.update(id, objUser);
+        const publisher = await controllerPublish.update(id, objPublish);
         
         // await generateCardPublisher(publisher);
         // currentElement.remove();
@@ -44,7 +44,6 @@ buttonDelete.addEventListener("click", async () => {
         // alert(error.message);
         console.log(error);
     }
-
 });
 
 loadingPublisher();

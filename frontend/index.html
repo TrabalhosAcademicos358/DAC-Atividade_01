@@ -31,10 +31,10 @@
                         <a class="nav-link" href="publisher.html">Editoras</a>
                     </li>
                 </ul>
-
-                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_select">
+                
+                <!-- <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_select">
                     <i class="bi bi-plus-circle h2"></i>
-                </div>
+                </div> -->
             </div>
         </div>
     </nav>
@@ -56,83 +56,5 @@
           <a href="https://github.com/Pedro35803">Pedro35803</a>
         </div>
     </footer>
-
-    <!-- Modais de editar -->
-
-    <div class="modal fade" id="modal_book_edit" tabindex="-1" aria-labelledby="modal_book_edit" aria-hidden="true">
-        <form class="modal-dialog" id="form_book_edit" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Adicionar Livro</h5>
-                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Link</span>
-                        <input type="text" class="form-control" placeholder="Link da Imagem" name="link_img" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Nome</span>
-                        <input type="text" class="form-control" placeholder="Nome do Livro" name="title" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Lançamento</span>
-                        <input type="date" class="form-control" placeholder="Data de Lançamento" name="release_date" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                    <button class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="modal fade" id="modal_publisher_edit" tabindex="-1" aria-labelledby="modal_publisher_edit" aria-hidden="true">
-        <form class="modal-dialog" id="form_publisher_edit" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Adicionar Editora</h5>
-                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Link</span>
-                        <input type="text" class="form-control" placeholder="Link da Imagem" name="link_img" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Nome</span>
-                        <input type="text" class="form-control" placeholder="Nome da Editora" name="trading_name" required>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Origem</span>
-                        <input type="text" class="form-control" placeholder="Lugar de Origem" name="place_of_origin" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
-                    <button class="btn btn-primary">Salvar</button>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <!-- Modal para selecionar se quer adicionar livro ou editora -->
-
-    <div class="modal fade" id="modal_select" tabindex="-1" aria-labelledby="modal_select" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header p-3 bg-primary d-flex justify-content-center">
-                    <h5 class="modal-title text-white">Escolhar o que vai adicionar:</h5>
-                </div>
-                <div class="modal-body p-4 d-flex gap-4 justify-content-center">
-                    <button class="btn btn-outline-primary w-50 fw-bold" id="button_add_publisher" data-bs-toggle="modal" data-bs-target="#modal_publisher_edit">Editora</button>
-                    <button class="btn btn-primary w-50 fw-bold" id="button_add_book" data-bs-toggle="modal" data-bs-target="#modal_book_edit">Livro</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="js/script.js" type="module"></script>
 </body>
 </html>

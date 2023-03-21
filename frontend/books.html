@@ -32,7 +32,7 @@
                     </li>
                 </ul>
 
-                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_book_edit">
+                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_book_create">
                     <i class="bi bi-plus-circle h2"></i>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
             
-            <ul class="p-0" id="list-books"></ul>
+            <ul class="p-0 d-flex flex-wrap gap-3 justify-content-center" id="list-book"></ul>
         </div>
     </main>
     
@@ -60,10 +60,39 @@
         </div>
     </footer>
 
+    <div class="modal fade" id="modal_book_create" tabindex="-1" aria-labelledby="modal_book_create" aria-hidden="true">
+        <form class="modal-dialog" id="form_book_create" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Livro</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Link</span>
+                        <input type="text" class="form-control" placeholder="Link da Imagem" name="link_img" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nome</span>
+                        <input type="text" class="form-control" placeholder="Nome do Livro" name="title" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Lançamento</span>
+                        <input type="date" class="form-control" placeholder="Data de Lançamento" name="release_date" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                    <button class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <div class="modal fade" id="modal_book_edit" tabindex="-1" aria-labelledby="modal_book_edit" aria-hidden="true">
         <form class="modal-dialog" id="form_book_edit" method="post">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-warning">
                     <h5 class="modal-title">Adicionar Livro</h5>
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -100,7 +129,7 @@
                 </div>
                 <div class="modal-footer d-flex gap-2">
                     <button class="btn btn-secondary w-50" data-bs-dismiss="modal">Cancelar</button>
-                    <button class="btn btn-danger w-50">Excluir</button>
+                    <button class="btn btn-danger w-50" id="delete_book">Excluir</button>
                 </div>
             </div>
         </div>

@@ -17,7 +17,11 @@ export const create = async ({
 		headers: {
 			"Content-Type": "application/json",
 		},
-        body: JSON.stringify({ release_date, link_img, title })
+        body: JSON.stringify({
+            release_date: release_date + "T13:00:00Z", 
+            link_img, 
+            title 
+        })
 	};
 
     const response = await fetch(urlApi, config);
@@ -28,6 +32,8 @@ export const create = async ({
 }
 
 export const update = async (id, update) => {
+    if (update.release_date) update.release_date += "T13:00:00Z"
+    
     const config = {
 		method: "PATCH",
 		headers: {
@@ -37,6 +43,7 @@ export const update = async (id, update) => {
 	};
 
     const response = await fetch(`${urlApi}/${id}`, config);
+    console.log(response)
 
     if (!response.ok) throw new Error('Não foi possível atualizar livro.');
 

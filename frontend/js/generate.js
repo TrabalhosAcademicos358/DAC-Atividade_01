@@ -27,9 +27,9 @@ export const generateCardPublisher = ({
                 <p class="m-1"><strong class="fw-bold">Local de Origem:</strong> ${place_of_origin}</p>
             </span>
         </li>
-    `
+    `;
 
-    addElement(element)
+    addElement(element, "#list-publish");
 }
 
 export const generateCardBook = ({ 
@@ -58,9 +58,9 @@ export const generateCardBook = ({
                 <p class="m-0"><strong class="fw-bold">Data de Lançamento:</strong> ${formateDate(release_date)}</p>
             </span>
         </li>
-    `
+    `;
 
-    addElement(element)
+    addElement(element, "#list-book");
 }
 
 const limitText = (text, limit) => {
@@ -71,12 +71,14 @@ const limitText = (text, limit) => {
 }
 
 const formateDate = (date) => {
-    const listDate = date.split("-");
-    const dateFormated = listDate[1] + "/" + listDate[0] + "/" + listDate[2];
+    const listDateAndTime = date.split("T");
+    const listDate = listDateAndTime[0].split("-");
+    
+    const dateFormated = listDate[2] + "/" + listDate[1] + "/" + listDate[0];
     return dateFormated;
 }
 
-const addElement = (element) => {
+const addElement = (element, idList) => {
     const parser = new DOMParser()
     const elementHTML = parser.parseFromString(element, "text/html");
 
@@ -85,6 +87,6 @@ const addElement = (element) => {
         sessionStorage.setItem("id", tagLi.id)
     });
 
-    const list = document.querySelector("#list-publish");
+    const list = document.querySelector(idList);
     list.appendChild(tagLi);
 }
