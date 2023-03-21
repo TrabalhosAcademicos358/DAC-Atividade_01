@@ -32,7 +32,7 @@
                     </li>
                 </ul>
 
-                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_publisher_edit">
+                <div class="cursor-pointer" data-bs-toggle="modal" data-bs-target="#modal_publisher_create">
                     <i class="bi bi-plus-circle h2"></i>
                 </div>
             </div>
@@ -59,11 +59,40 @@
         </div>
     </footer>
 
-    <div class="modal fade" id="modal_publisher_edit" tabindex="-1" aria-labelledby="modal_publisher_edit" aria-hidden="true">
-        <form class="modal-dialog" id="form_publisher_edit">
+    <div class="modal fade" id="modal_publisher_create" tabindex="-1" aria-labelledby="modal_publisher_edit" aria-hidden="true">
+        <form class="modal-dialog" id="form_publisher_create">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Adicionar Editora</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Link</span>
+                        <input type="text" class="form-control" placeholder="Link da Imagem" name="link_img" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nome</span>
+                        <input type="text" class="form-control" placeholder="Nome da Editora" name="trading_name" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Origem</span>
+                        <input type="text" class="form-control" placeholder="Lugar de Origem" name="place_of_origin" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                    <button class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal fade" id="modal_publisher_edit" tabindex="-1" aria-labelledby="modal_publisher_edit" aria-hidden="true">
+        <form class="modal-dialog" id="form_publisher_edit">
+            <div class="modal-content">
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title">Editar Dados</h5>
                     <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -92,7 +121,7 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header bg-danger d-flex justify-content-center">
-                    <h5 class="modal-title text-white" id="modal_delete-title">Excluir Editora</h5>
+                    <h5 class="modal-title text-white">Excluir Editora</h5>
                 </div>
                 <div class="modal-body d-flex justify-content-center">
                     <i class="bi bi-x-circle-fill h1 text-danger"></i>

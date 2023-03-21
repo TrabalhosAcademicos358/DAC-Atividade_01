@@ -9,7 +9,7 @@ export const getForId = async (req, res) => {
     const { id } = req.params;
 
     const publisher = await db.publisher.findUniqueOrThrow({
-        where: { id }
+        where: { id: Number(id) }
     });
 
     res.json(publisher);
@@ -30,11 +30,11 @@ export const update = async (req, res) => {
     const { place_of_origin, trading_name, link_img } = req.body;
 
     await db.publisher.findUniqueOrThrow({
-        where: { id }
+        where: { id: Number(id) }
     });
 
-    const publisher = await bd.publisher.update({
-        where: { id },
+    const publisher = await db.publisher.update({
+        where: { id: Number(id) },
         data: { place_of_origin, trading_name, link_img }
     });
 
