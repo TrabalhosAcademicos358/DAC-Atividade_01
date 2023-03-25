@@ -1,5 +1,7 @@
 import config from "../config.js";
 
+import { formatDateSave } from "../services/formatDate.js"
+
 const urlApi = config.urlApi + "/books";
 
 export const getAll = async () => {
@@ -18,7 +20,7 @@ export const create = async ({
 			"Content-Type": "application/json",
 		},
         body: JSON.stringify({
-            release_date: release_date + "T13:00:00Z", 
+            release_date: formatDateSave(release_date), 
             link_img, 
             title 
         })
@@ -32,7 +34,8 @@ export const create = async ({
 }
 
 export const update = async (id, update) => {
-    if (update.release_date) update.release_date += "T13:00:00Z"
+    if (update.release_date) 
+        update.release_date = formatDateSave(update.release_date)
     
     const config = {
 		method: "PATCH",

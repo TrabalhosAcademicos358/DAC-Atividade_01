@@ -1,3 +1,6 @@
+import { formatDate } from "./services/formatDate.js"
+import limitText from "./services/limitText.js"
+
 export const generateCardPublisher = ({ 
     place_of_origin, 
     trading_name, 
@@ -29,7 +32,7 @@ export const generateCardPublisher = ({
         </li>
     `;
 
-    addElement(element, "#list-publish");
+    addElement(element, "#list-publish", { place_of_origin, trading_name, link_img });
 }
 
 export const generateCardBook = ({ 
@@ -55,38 +58,40 @@ export const generateCardBook = ({
                 <img src="${link_img}" alt="Imagem do Livro" class="img-book img-fluid">
             </picture>
             <span class="d-flex justify-content-center">
-                <p class="m-0"><strong class="fw-bold">Data de Lançamento:</strong> ${formateDate(release_date)}</p>
+                <p class="m-0 field_date"><strong class="fw-bold">Data de Lançamento:</strong> ${formatDate(release_date)}</p>
             </span>
         </li>
     `;
 
-    addElement(element, "#list-book");
+    addElement(element, "#list-book", { release_date, link_img, title });
 }
 
-const limitText = (text, limit) => {
-    if (text.length > limit) {
-      return text.slice(0, limit-3) + "...";
-    }
-    return text;
-}
-
-const formateDate = (date) => {
-    const listDateAndTime = date.split("T");
-    const listDate = listDateAndTime[0].split("-");
-    
-    const dateFormated = listDate[2] + "/" + listDate[1] + "/" + listDate[0];
-    return dateFormated;
-}
-
-const addElement = (element, idList) => {
+const addElement = (element, idList, values) => {
     const parser = new DOMParser()
     const elementHTML = parser.parseFromString(element, "text/html");
 
-    const tagLi = elementHTML.querySelector("li")
+    const tagLi = elementHTML.querySelector("li");
+
     tagLi.addEventListener("click", () => {
-        sessionStorage.setItem("id", tagLi.id)
+        sessionStorage.setItem("id", tagLi.id);
+        // sessionStorage.setItem("data", values);
+        feedModal(values)
     });
 
     const list = document.querySelector(idList);
     list.appendChild(tagLi);
+}
+
+const feedModal = (valuesObj) => {
+    let modal = document.querySelector("#modal_publisher_edit");
+
+    if (valuesObj.release_date) {
+        valuesObj.release_date = formatDate(valuesObj.release_date)
+        modal = document.querySelector("#modal_book_edit");
+    }
+
+    for (const key in valuesObj) {
+        const element = modal.querySelector(`input[name='${key}']`);
+        element.value = valuesObj[key];
+    }
 }

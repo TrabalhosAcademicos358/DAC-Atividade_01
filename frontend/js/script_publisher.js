@@ -19,17 +19,20 @@ form_publish_create.addEventListener("submit", async (event) => {
 const form_publish_edit = document.querySelector("#form_publisher_edit");
 form_publish_edit.addEventListener("submit", async (event) => {
     event.preventDefault();
+    console.log('oi')
 
     try {
         const objPublish = Object.fromEntries(new FormData(form_publish_edit));
-        // const currentElement = document.querySelector("li#" + id);
-
+        
         const id = sessionStorage.getItem("id");
+        // const currentElement = document.querySelector("#form_publisher_edit");
+        // console.log(currentElement)
         const publisher = await controllerPublish.update(id, objPublish);
         
-        // await generateCardPublisher(publisher);
-        // currentElement.remove();
+        await generateCardPublisher(publisher);
+        currentElement.remove();
     } catch (error) {
+        console.log(error)
         alert(error.message);
     }
 });
