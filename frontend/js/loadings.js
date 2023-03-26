@@ -1,7 +1,7 @@
 import {
     generateCardPublisher,
     generateCardBook
-} from "./generate.js"
+} from "./services/generate.js"
 
 import * as controllerPublish from "./crud/crud_publisher.js"
 import * as controllerBooks from "./crud/crud_books.js"

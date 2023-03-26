@@ -16,10 +16,10 @@ export const getForId = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-    const { release_date, title, link_img } = req.body;
+    const { author_name, title, link_img } = req.body;
 
     const book = await db.book.create({                                                                                                                                                                                                                                                                                                                                                                                                        
-        data: { release_date, title, link_img }
+        data: { author_name, title, link_img }
     });
 
     res.status(201).json(book);
@@ -27,7 +27,7 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
     const { id } = req.params;
-    const { release_date, title, link_img } = req.body;
+    const { author_name, title, link_img } = req.body;
 
     await db.book.findUniqueOrThrow({
         where: { id: Number(id) }
@@ -35,10 +35,8 @@ export const update = async (req, res) => {
 
     const book = await db.book.update({
         where: { id: Number(id) },
-        data: { release_date, title, link_img }
+        data: { author_name, title, link_img }
     });
-
-    console.log(book)
 
     res.status(201).json(book);
 }

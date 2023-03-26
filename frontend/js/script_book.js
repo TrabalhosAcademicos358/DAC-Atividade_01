@@ -1,8 +1,7 @@
 import * as controllerBooks from "./crud/crud_books.js";
 
-import { generateCardBook } from "./generate.js";
+import { generateCardBook } from "./services/generate.js";
 import { loadingBooks } from "./loadings.js";
-import { formatDateForInput } from "./services/formatDate.js";
 
 const form_book_create = document.querySelector("#form_book_create");
 form_book_create.addEventListener("submit", async event => {
@@ -27,7 +26,7 @@ form_book_edit.addEventListener("submit", async event => {
         const id = sessionStorage.getItem("id");
         const book = await controllerBooks.update(id, objBook);
 
-        await generateCardBook(book);
+        const currentElement = await generateCardBook(book);
         currentElement.remove();
     } catch (error) {
         alert(error.message);
@@ -45,12 +44,5 @@ buttonDelete.addEventListener("click", async () => {
         console.log(error);
     }
 });
-
-const inputDate = document.querySelectorAll("input[name='release_date']")
-inputDate.forEach(input => input.addEventListener("keyup", event => {
-    const key = event.key
-    console.log(key)
-    input.value = formatDateForInput(input.value)
-}))
 
 loadingBooks();

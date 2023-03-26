@@ -1,5 +1,4 @@
-import { formatDate } from "./services/formatDate.js"
-import limitText from "./services/limitText.js"
+import limitText from "./limitText.js"
 
 export const generateCardPublisher = ({ 
     place_of_origin, 
@@ -36,7 +35,7 @@ export const generateCardPublisher = ({
 }
 
 export const generateCardBook = ({ 
-    release_date,
+    author_name,
     link_img,
     title,
     id
@@ -58,37 +57,35 @@ export const generateCardBook = ({
                 <img src="${link_img}" alt="Imagem do Livro" class="img-book img-fluid">
             </picture>
             <span class="d-flex justify-content-center">
-                <p class="m-0 field_date"><strong class="fw-bold">Data de Lançamento:</strong> ${formatDate(release_date)}</p>
+                <p class="m-0 field_date"><strong class="fw-bold">Nome do Autor:</strong> ${limitText(author_name, 15)}</p>
             </span>
         </li>
     `;
 
-    addElement(element, "#list-book", { release_date, link_img, title });
+    addElement(element, "#list-book", { author_name, link_img, title });
 }
 
 const addElement = (element, idList, values) => {
-    const parser = new DOMParser()
+    const parser = new DOMParser();
     const elementHTML = parser.parseFromString(element, "text/html");
 
     const tagLi = elementHTML.querySelector("li");
 
+    let idForm = "#form_publisher_edit";
+    if (values.author_name) idForm = "#form_book_edit";
+
     tagLi.addEventListener("click", () => {
         sessionStorage.setItem("id", tagLi.id);
         // sessionStorage.setItem("data", values);
-        feedModal(values)
+        feedModal(values, idForm);
     });
 
     const list = document.querySelector(idList);
     list.appendChild(tagLi);
 }
 
-const feedModal = (valuesObj) => {
-    let modal = document.querySelector("#modal_publisher_edit");
-
-    if (valuesObj.release_date) {
-        valuesObj.release_date = formatDate(valuesObj.release_date)
-        modal = document.querySelector("#modal_book_edit");
-    }
+const feedModal = (valuesObj, idForm) => {
+    const modal = document.querySelector(idForm);
 
     for (const key in valuesObj) {
         const element = modal.querySelector(`input[name='${key}']`);
