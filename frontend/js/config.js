@@ -1,3 +1,3 @@
 export default {
-    urlApi: "http://localhost:8000/api/v1"
+    urlApi: "http://localhost:3000/api/v1"
 }
