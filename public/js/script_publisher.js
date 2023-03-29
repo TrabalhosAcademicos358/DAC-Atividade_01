@@ -1,7 +1,8 @@
 import * as controllerPublish from "./crud/crud_publisher.js";
 
-import { generateCardPublisher } from "./generate.js";
+import { generateCardPublisher } from "./services/generate.js";
 import { loadingPublisher } from "./loadings.js";
+import { closeModal } from "./services/modal.js";
 
 const form_publish_create = document.querySelector("#form_publisher_create");
 form_publish_create.addEventListener("submit", async (event) => {
@@ -10,6 +11,7 @@ form_publish_create.addEventListener("submit", async (event) => {
     try {
         const objPublish = Object.fromEntries(new FormData(form_publish_create));
         const publisher = await controllerPublish.create(objPublish);
+        closeModal("#modal_publisher_create");
         await generateCardPublisher(publisher);
     } catch (error) {
         alert(error.message);
@@ -25,12 +27,11 @@ form_publish_edit.addEventListener("submit", async (event) => {
         const objPublish = Object.fromEntries(new FormData(form_publish_edit));
         
         const id = sessionStorage.getItem("id");
-        // const currentElement = document.querySelector("#form_publisher_edit");
-        // console.log(currentElement)
         const publisher = await controllerPublish.update(id, objPublish);
         
-        await generateCardPublisher(publisher);
-        currentElement.remove();
+        // await generateCardPublisher(publisher);
+        // currentElement.remove();
+        location.reload()
     } catch (error) {
         console.log(error)
         alert(error.message);
@@ -42,10 +43,10 @@ buttonDelete.addEventListener("click", async () => {
     try {
         const id = sessionStorage.getItem("id");
         await controllerPublish.destroy(id);
-        document.querySelector("#" + id).remove();
+        // document.querySelector("#" + id).remove();
+        location.reload();
     } catch (error) {
-        // alert(error.message);
-        console.log(error);
+        alert(error.message);
     }
 });
 

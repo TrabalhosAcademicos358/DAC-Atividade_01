@@ -10,6 +10,7 @@ form_book_create.addEventListener("submit", async event => {
     try {
         const objBook = Object.fromEntries(new FormData(form_book_create));
         const book = await controllerBooks.create(objBook);
+        closeModal("#modal_book_create");
         await generateCardBook(book);
     } catch (error) {
         alert(error.message);
@@ -26,8 +27,8 @@ form_book_edit.addEventListener("submit", async event => {
         const id = sessionStorage.getItem("id");
         const book = await controllerBooks.update(id, objBook);
 
-        const currentElement = await generateCardBook(book);
-        currentElement.remove();
+        // await generateCardBook(book);
+        location.reload()
     } catch (error) {
         alert(error.message);
     }
@@ -38,10 +39,9 @@ buttonDelete.addEventListener("click", async () => {
     try {
         const id = sessionStorage.getItem("id");
         await controllerBooks.destroy(id);
-        document.querySelector("#" + id).remove();
+        location.reload();
     } catch (error) {
-        // alert(error.message);
-        console.log(error);
+        alert(error.message);
     }
 });
 
